@@ -47,32 +47,21 @@ public class Scanner {
             c = source.charAt(i);
 
             switch (estado){
+                //Reconocimiento de Letras y Numeros.
                 case 0:
                     if(Character.isLetter(c)){
-                        estado = 13;
+                        estado = 1;
                         lexema += c;
                     }
                     else if(Character.isDigit(c)){
-                        estado = 15;
+                        estado = 2;
                         lexema += c;
-
-                        /*while(Character.isDigit(c)){
-                            lexema += c;
-                            i++;
-                            c = source.charAt(i);
-                        }
-                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
-                        lexema = "";
-                        estado = 0;
-                        tokens.add(t);
-                        */
-
                     }
                     break;
 
-                case 13:
+                case 1:
                     if(Character.isLetterOrDigit(c)){
-                        estado = 13;
+                        estado = 1;
                         lexema += c;
                     }
                     else{
@@ -94,9 +83,9 @@ public class Scanner {
                     }
                     break;
 
-                case 15:
+                case 2:
                     if(Character.isDigit(c)){
-                        estado = 15;
+                        estado = 2;
                         lexema += c;
                     }
                     else if(c == '.'){
@@ -114,12 +103,117 @@ public class Scanner {
                         i--;
                     }
                     break;
-            }
-
-
+            
+                case 3:
+                    
+                    if (c != '\0') {
+                       if(c =='<'){
+                            lexema = ""+c;
+                            Token t = new Token(TipoToken.LESS,lexema);
+                            tokens.add(t);
+                        } 
+                        else if(c == '='){
+                            lexema = ""+c;
+                            Token t = new Token(TipoToken.EQUAL,lexema);
+                            tokens.add(t);                              
+                        }
+                        else if(c =='>'){
+                            lexema = ""+c;
+                            Token t = new Token(TipoToken.GREATER,lexema);
+                            tokens.add(t);                              
+                        }
+                        else if(c == '!'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.BANG,lexema);
+                            tokens.add(t);                           
+                        }
+                        else if(c == '('){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.RIGHT_PAREN,lexema);
+                            tokens.add(t);                           
+                        }
+                        else if(c ==')'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.LEFT_PAREN,lexema);
+                            tokens.add(t);                           
+                        }
+                       else if(c =='{'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.RIGHT_BRACE,lexema);
+                            tokens.add(t);                           
+                        }
+                         else if(c =='}'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.LEFT_BRACE,lexema);
+                            tokens.add(t);                           
+                        }
+//                       else if(c =='"'){
+//                           estado = 11;                           
+//                        }
+                        else if(c == '+'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.PLUS,lexema);
+                            tokens.add(t);                           
+                        }
+                       else if(c == '-'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.MINUS,lexema);
+                            tokens.add(t);                           
+                        }
+                       else if(c == '*'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.STAR,lexema);
+                            tokens.add(t);                           
+                        }
+                       else if(c == '/'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.SLASH,lexema);
+                            tokens.add(t);                           
+                        }
+//                       else if(c == '<='){
+//                           lexema = ""+c;
+//                            Token t = new Token(TipoToken.LESS,lexema);
+//                            tokens.add(t);                           
+//                        }
+//                       else if(c == '>='){
+//                           lexema = ""+c;
+//                            Token t = new Token(TipoToken.LESS,lexema);
+//                            tokens.add(t);                           
+//                        }
+//                       else if(c == '=='){
+//                           lexema = ""+c;
+//                            Token t = new Token(TipoToken.LESS,lexema);
+//                            tokens.add(t);                           
+//                        }
+//                       else if(c == '!='){
+//                           lexema = ""+c;
+//                            Token t = new Token(TipoToken.LESS,lexema);
+//                            tokens.add(t);                           
+//                        }
+                       else if(c == '.'){
+                           lexema = ""+c;
+                            Token t = new Token(TipoToken.LESS,lexema);
+                            tokens.add(t);                           
+                        }
+                        else if(c ==';'){
+                           
+                           
+                        }
+                       else if(c ==','){
+                           
+                           
+                        }
+                       else if(c =='.'){
+                           
+                           
+                        }                       
+                       break;
+                       
+                       
+             
+                }
+            }       
         }
-
-
         return tokens;
     }
 }
