@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  *
- * @author jesus
+ * @author Jesus, Habid, Joan
  */
 public class Scanner {
 
@@ -28,6 +28,21 @@ public class Scanner {
         palabrasReservadas.put("true",   TipoToken.TRUE);
         palabrasReservadas.put("var",    TipoToken.VAR);
         palabrasReservadas.put("while",  TipoToken.WHILE);
+
+        palabrasReservadas.put("clase", TipoToken.CLASE);
+        palabrasReservadas.put("ademas", TipoToken.ADEMAS);
+        palabrasReservadas.put("si", TipoToken.SI);
+        palabrasReservadas.put("nulo", TipoToken.NULO);
+        palabrasReservadas.put("imprimir", TipoToken.IMPRIMIR);
+        palabrasReservadas.put("devolver", TipoToken.DEVOLVER);
+        palabrasReservadas.put("falso", TipoToken.FALSO);
+        palabrasReservadas.put("verdadero", TipoToken.VERDADERO);
+        palabrasReservadas.put("mientras", TipoToken.MIENTRAS);
+        palabrasReservadas.put("para", TipoToken.PARA);
+        palabrasReservadas.put("FUNCION", TipoToken.FUNCION);
+        palabrasReservadas.put("SUPER", TipoToken.SUPER);
+        palabrasReservadas.put("este", TipoToken.ESTE);
+        palabrasReservadas.put("variable", TipoToken.VARIABLE);  
     }
 
     private final String source;
